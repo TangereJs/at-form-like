@@ -5,6 +5,7 @@
   "dependencies": {
     "tangere": "TangereJs/tangere#master",
     "at-theme": "TangereJs/at-theme#master",
+    "at-carbon-icon": "TangereJs/at-carbon-icon#master",
     "at-doc-viewer": "TangereJs/at-doc-viewer#master"
   }
 }

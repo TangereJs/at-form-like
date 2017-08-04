@@ -1,15 +1,33 @@
 <link rel="import" href="../tangere/tangere.html" />
+<link rel="import" href="../at-carbon-icon/at-carbon-icon.html" />
+<link rel="import" href="../at-theme/at-theme.html" />
 
 <dom-module id="at-form-like">
   <template>
     <style>
-      :host {
+       :host {
         display: block;
         box-sizing: border-box;
       }
+
+      .thumb-icon {
+        display: block;
+        box-sizing: border-box;
+        width: 24px;
+        height: 24px;
+
+        color: darkgray;
+      }
+
+      .selected {
+        color: var(--at-primary);
+      }
+
     </style>
-    
-    <div>Hello world!</div>
+
+    <at-carbon-icon icon="now:thumb-up" class$="thumb-icon [[_computeUpSelected(value)]]"></at-carbon-icon>
+    <at-carbon-icon icon="now:thumb-down" class$="thumb-icon [[_computeDownSelected(value)]]"></at-carbon-icon>
+
   </template>
 </dom-module>
 <script>
@@ -17,9 +35,60 @@
     is: "at-form-like",
     properties: {
       
-    },
-    ready: function () {
+      /**
+       * Layout of the thumb icons. Possible values are vertical and horizontal
+       * 
+       * @property layout
+       * @type String
+       * @default 'vertical'
+       */
+      layout: {
+        type: String,
+        value: 'vertical',
+        observer: '_layoutChanged',
+        xtype: 'enum',
+        xvaluelist: [{
+            title: 'Vertical',
+            value: 'vertical'
+          },
+          {
+            title: 'Horizontal',
+            value: 'horizontal'
+          },
+        ]
+      },
 
+      /**
+       * Value of the element. Possible values are 
+       * -1: thumb down selected
+       *  0: none selected
+       *  1: thumb up selected
+       * @property 
+       * @type 
+       * @default  
+       */
+      value: {
+        type: Number,
+        value: 0
+      }
+    },
+    ready: function() {
+    },
+    _layoutChanged: function(newValue, oldValue) {
+      if (!this.classList.contains('layout')) {
+        this.classList.add('layout');
+      }
+      if (oldValue) {
+        this.classList.remove(oldValue);
+      }
+      this.classList.add(newValue);
+    },
+    _computeUpSelected: function(value) {
+      return value === 1 ? 'selected' : '';
+    },
+    _computeDownSelected: function(value) {
+      return value === -1 ? 'selected' : '';
     }
   });
+
 </script>
