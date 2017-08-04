@@ -1,0 +1,10 @@
+{
+  "name": "at-form-like",
+  "private": true,
+  "version": "1.0.0.0",
+  "dependencies": {
+    "tangere": "TangereJs/tangere#master",
+    "at-theme": "TangereJs/at-theme#master",
+    "at-doc-viewer": "TangereJs/at-doc-viewer#master"
+  }
+}
