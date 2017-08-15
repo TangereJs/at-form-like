@@ -76,7 +76,21 @@
           { title: "0", value: 0 },
           { title: "1", value: 1 },
         ]
+      },
+
+      /**
+       * when true clicking on the selected thumb desects the thumb 
+       * value 1 -> 0 and -1 -> 0
+       * 
+       * @property 
+       * @type 
+       * @default  
+       */
+      allowDiselect: {
+        type: Boolean,
+        value: false
       }
+      
     },
     ready: function() {
     },
@@ -97,13 +111,15 @@
     },
     
     _handleThumbUpOnTap: function(event) {
-      this.value = 1;
-      this._fireValueChangedEvent(1);
+      var newValue = this.allowDiselect && this.value === 1 ? 0 : 1;
+      this.value = newValue;
+      this._fireValueChangedEvent(newValue);
     },
 
     _handleThumbDownOnTap: function(event) {
-      this.value = -1;
-      this._fireValueChangedEvent(-1);
+      var newValue = this.allowDiselect && this.value === -1 ? 0 : -1;
+      this.value = newValue;
+      this._fireValueChangedEvent(newValue);
     },
 
     _fireValueChangedEvent: function(newValue) {
