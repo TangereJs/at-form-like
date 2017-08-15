@@ -25,8 +25,8 @@
 
     </style>
 
-    <at-carbon-icon icon="now:thumb-up" class$="thumb-icon [[_computeUpSelected(value)]]"></at-carbon-icon>
-    <at-carbon-icon icon="now:thumb-down" class$="thumb-icon [[_computeDownSelected(value)]]"></at-carbon-icon>
+    <at-carbon-icon icon="now:thumb-up" class$="thumb-icon [[_computeUpSelected(value)]]" on-tap="_handleThumbUpOnTap"></at-carbon-icon>
+    <at-carbon-icon icon="now:thumb-down" class$="thumb-icon [[_computeDownSelected(value)]]" on-tap="_handleThumbDownOnTap"></at-carbon-icon>
 
   </template>
 </dom-module>
@@ -69,7 +69,13 @@
        */
       value: {
         type: Number,
-        value: 0
+        value: 0,
+        xtype: 'enum',
+        xvaluelist: [
+          { title: "-1", value: -1 },
+          { title: "0", value: 0 },
+          { title: "1", value: 1 },
+        ]
       }
     },
     ready: function() {
@@ -84,10 +90,24 @@
       this.classList.add(newValue);
     },
     _computeUpSelected: function(value) {
-      return value === 1 ? 'selected' : '';
+      return parseInt(value) === 1 ? 'selected' : '';
     },
     _computeDownSelected: function(value) {
-      return value === -1 ? 'selected' : '';
+      return parseInt(value) === -1 ? 'selected' : '';
+    },
+    
+    _handleThumbUpOnTap: function(event) {
+      this.value = 1;
+      this._fireValueChangedEvent(1);
+    },
+
+    _handleThumbDownOnTap: function(event) {
+      this.value = -1;
+      this._fireValueChangedEvent(-1);
+    },
+
+    _fireValueChangedEvent: function(newValue) {
+      this.fire('value-changed', { value: newValue }, { bubbles: false });
     }
   });
 
