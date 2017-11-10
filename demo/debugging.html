@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>at-form-like demo page</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../at-theme/at-theme.html">
+    <link rel="import" href="../at-form-like.html">
+
+    <style is="custom-style">
+      .font-title {
+        @apply(--paper-font-body1);
+        font-size: 18px;
+      }
+
+      .inline-like {
+        display: inline-flex;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .demo-margins {
+        margin: 8px;
+      }
+
+      .horizontal-layout {
+        @apply(--layout-horizontal);
+      }
+
+      at-form-like {
+        /* Uncomment this border to confirm that block/flex and inline-flex behavior is correct */
+        /*border: 1px solid purple;*/
+      }
+
+    </style>
+  </head>
+
+  <body class="layout horizontal">
+    <div class="flex demo-margins">
+      <h4 class="font-title">Layout vertical, value 0</h4>
+      <at-form-like layout=""></at-form-like>
+    </div>
+
+    <script>
+      document.addEventListener('WebComponentsReady', function() {
+      });
+
+    </script>
+  </body>
+
+</html>

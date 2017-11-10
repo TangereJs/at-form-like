@@ -98,10 +98,13 @@
       if (!this.classList.contains('layout')) {
         this.classList.add('layout');
       }
-      if (oldValue) {
+      // TODO(ij): validate layout value, not css class name
+      if (this._isValidClassName(oldValue)) {
         this.classList.remove(oldValue);
       }
-      this.classList.add(newValue);
+      if (this._isValidClassName(newValue)) {
+        this.classList.add(newValue);
+      }
     },
     _computeUpSelected: function(value) {
       return parseInt(value) === 1 ? 'selected' : '';
@@ -124,6 +127,17 @@
 
     _fireValueChangedEvent: function(newValue) {
       this.fire('value-changed', { value: newValue }, { bubbles: false });
+    },
+
+    _isValidClassName: function(name) {
+      if (!this._isString(name)) return false;
+      if (!name.length) return false;
+      if (name.indexOf(" ") > -1) return false;
+      return true;
+    },
+
+    _isString: function(obj) {
+      return Object.prototype.toString.apply(obj) === "[object String]";
     }
   });
 
