@@ -1,0 +1,572 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>at-form-like tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link rel="import" href="../at-form-like.html">
+  <link rel="import" href="../../iron-test-helpers/iron-test-helpers.html" />
+  </head>
+  <body>
+    <test-fixture id="layoutNotset_valueNotset_allowDiselectNotset">
+      <template>
+        <at-form-like></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutNotset_valueNotset_allowDiselectTrue">
+      <template>
+        <at-form-like allow-diselect="true"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutNotset_valueNotset_allowDiselectFalse">
+      <template>
+        <at-form-like allow-diselect="false"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutNotset_value-1_allowDiselectNotset">
+      <template>
+        <at-form-like value="-1"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutNotset_value-1_allowDiselectTrue">
+      <template>
+        <at-form-like value="-1" allow-diselect="true"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutNotset_value-1_allowDiselectFalse">
+      <template>
+        <at-form-like value="-1" allow-diselect="false"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutNotset_value0_allowDiselectNotset">
+      <template>
+        <at-form-like value="0"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutNotset_value0_allowDiselectTrue">
+      <template>
+        <at-form-like value="0" allow-diselect="true"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutNotset_value0_allowDiselectFalse">
+      <template>
+        <at-form-like value="0" allow-diselect="false"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutNotset_value1_allowDiselectNotset">
+      <template>
+        <at-form-like value="1"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutNotset_value1_allowDiselectTrue">
+      <template>
+        <at-form-like value="1" allow-diselect="true"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutNotset_value1_allowDiselectFalse">
+      <template>
+        <at-form-like value="1" allow-diselect="false"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutVertical_valueNotset_allowDiselectNotset">
+      <template>
+        <at-form-like layout="vertical"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutVertical_valueNotset_allowDiselectTrue">
+      <template>
+        <at-form-like layout="vertical" allow-diselect="true"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutVertical_valueNotset_allowDiselectFalse">
+      <template>
+        <at-form-like layout="vertical" allow-diselect="false"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutVertical_value-1_allowDiselectNotset">
+      <template>
+        <at-form-like layout="vertical" value="-1"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutVertical_value-1_allowDiselectTrue">
+      <template>
+        <at-form-like layout="vertical" value="-1" allow-diselect="true"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutVertical_value-1_allowDiselectFalse">
+      <template>
+        <at-form-like layout="vertical" value="-1" allow-diselect="false"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutVertical_value0_allowDiselectNotset">
+      <template>
+        <at-form-like layout="vertical" value="0"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutVertical_value0_allowDiselectTrue">
+      <template>
+        <at-form-like layout="vertical" value="0" allow-diselect="true"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutVertical_value0_allowDiselectFalse">
+      <template>
+        <at-form-like layout="vertical" value="0" allow-diselect="false"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutVertical_value1_allowDiselectNotset">
+      <template>
+        <at-form-like layout="vertical" value="1"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutVertical_value1_allowDiselectTrue">
+      <template>
+        <at-form-like layout="vertical" value="1" allow-diselect="true"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutVertical_value1_allowDiselectFalse">
+      <template>
+        <at-form-like layout="vertical" value="1" allow-diselect="false"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutHorizontal_valueNotset_allowDiselectNotset">
+      <template>
+        <at-form-like layout="horizontal"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutHorizontal_valueNotset_allowDiselectTrue">
+      <template>
+        <at-form-like layout="horizontal" allow-diselect="true"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutHorizontal_valueNotset_allowDiselectFalse">
+      <template>
+        <at-form-like layout="horizontal" allow-diselect="false"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutHorizontal_value-1_allowDiselectNotset">
+      <template>
+        <at-form-like layout="horizontal" value="-1"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutHorizontal_value-1_allowDiselectTrue">
+      <template>
+        <at-form-like layout="horizontal" value="-1" allow-diselect="true"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutHorizontal_value-1_allowDiselectFalse">
+      <template>
+        <at-form-like layout="horizontal" value="-1" allow-diselect="false"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutHorizontal_value0_allowDiselectNotset">
+      <template>
+        <at-form-like layout="horizontal" value="0"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutHorizontal_value0_allowDiselectTrue">
+      <template>
+        <at-form-like layout="horizontal" value="0" allow-diselect="true"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutHorizontal_value0_allowDiselectFalse">
+      <template>
+        <at-form-like layout="horizontal" value="0" allow-diselect="false"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutHorizontal_value1_allowDiselectNotset">
+      <template>
+        <at-form-like layout="horizontal" value="1"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutHorizontal_value1_allowDiselectTrue">
+      <template>
+        <at-form-like layout="horizontal" value="1" allow-diselect="true"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="layoutHorizontal_value1_allowDiselectFalse">
+      <template>
+        <at-form-like layout="horizontal" value="1" allow-diselect="false"></at-form-like>
+      </template>
+    </test-fixture>
+    <test-fixture id="propertyTests">
+      <template>
+        <at-form-like></at-form-like>
+      </template>
+    </test-fixture>
+  <script>
+    suite("basic", function() { 
+      
+      suite("tests where properties are set as attributes", function() { 
+      
+        test("layoutNotset_valueNotset_allowDiselectNotset", function() { 
+          var elt = fixture("layoutNotset_valueNotset_allowDiselectNotset");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, false);
+        });
+        
+        test("layoutNotset_valueNotset_allowDiselectTrue", function() { 
+          var elt = fixture("layoutNotset_valueNotset_allowDiselectTrue");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutNotset_valueNotset_allowDiselectFalse", function() { 
+          var elt = fixture("layoutNotset_valueNotset_allowDiselectFalse");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutNotset_value-1_allowDiselectNotset", function() { 
+          var elt = fixture("layoutNotset_value-1_allowDiselectNotset");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, -1);
+          assert.equal(elt.allowDiselect, false);
+        });
+        
+        test("layoutNotset_value-1_allowDiselectTrue", function() { 
+          var elt = fixture("layoutNotset_value-1_allowDiselectTrue");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, -1);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutNotset_value-1_allowDiselectFalse", function() { 
+          var elt = fixture("layoutNotset_value-1_allowDiselectFalse");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, -1);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutNotset_value0_allowDiselectNotset", function() { 
+          var elt = fixture("layoutNotset_value0_allowDiselectNotset");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, false);
+        });
+        
+        test("layoutNotset_value0_allowDiselectTrue", function() { 
+          var elt = fixture("layoutNotset_value0_allowDiselectTrue");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutNotset_value0_allowDiselectFalse", function() { 
+          var elt = fixture("layoutNotset_value0_allowDiselectFalse");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutNotset_value1_allowDiselectNotset", function() { 
+          var elt = fixture("layoutNotset_value1_allowDiselectNotset");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 1);
+          assert.equal(elt.allowDiselect, false);
+        });
+        
+        test("layoutNotset_value1_allowDiselectTrue", function() { 
+          var elt = fixture("layoutNotset_value1_allowDiselectTrue");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 1);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutNotset_value1_allowDiselectFalse", function() { 
+          var elt = fixture("layoutNotset_value1_allowDiselectFalse");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 1);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutVertical_valueNotset_allowDiselectNotset", function() { 
+          var elt = fixture("layoutVertical_valueNotset_allowDiselectNotset");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, false);
+        });
+        
+        test("layoutVertical_valueNotset_allowDiselectTrue", function() { 
+          var elt = fixture("layoutVertical_valueNotset_allowDiselectTrue");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutVertical_valueNotset_allowDiselectFalse", function() { 
+          var elt = fixture("layoutVertical_valueNotset_allowDiselectFalse");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutVertical_value-1_allowDiselectNotset", function() { 
+          var elt = fixture("layoutVertical_value-1_allowDiselectNotset");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, -1);
+          assert.equal(elt.allowDiselect, false);
+        });
+        
+        test("layoutVertical_value-1_allowDiselectTrue", function() { 
+          var elt = fixture("layoutVertical_value-1_allowDiselectTrue");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, -1);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutVertical_value-1_allowDiselectFalse", function() { 
+          var elt = fixture("layoutVertical_value-1_allowDiselectFalse");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, -1);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutVertical_value0_allowDiselectNotset", function() { 
+          var elt = fixture("layoutVertical_value0_allowDiselectNotset");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, false);
+        });
+        
+        test("layoutVertical_value0_allowDiselectTrue", function() { 
+          var elt = fixture("layoutVertical_value0_allowDiselectTrue");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutVertical_value0_allowDiselectFalse", function() { 
+          var elt = fixture("layoutVertical_value0_allowDiselectFalse");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutVertical_value1_allowDiselectNotset", function() { 
+          var elt = fixture("layoutVertical_value1_allowDiselectNotset");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 1);
+          assert.equal(elt.allowDiselect, false);
+        });
+        
+        test("layoutVertical_value1_allowDiselectTrue", function() { 
+          var elt = fixture("layoutVertical_value1_allowDiselectTrue");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 1);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutVertical_value1_allowDiselectFalse", function() { 
+          var elt = fixture("layoutVertical_value1_allowDiselectFalse");
+          assert.equal(elt.layout, "vertical");
+          assert.equal(elt.value, 1);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutHorizontal_valueNotset_allowDiselectNotset", function() { 
+          var elt = fixture("layoutHorizontal_valueNotset_allowDiselectNotset");
+          assert.equal(elt.layout, "horizontal");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, false);
+        });
+        
+        test("layoutHorizontal_valueNotset_allowDiselectTrue", function() { 
+          var elt = fixture("layoutHorizontal_valueNotset_allowDiselectTrue");
+          assert.equal(elt.layout, "horizontal");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutHorizontal_valueNotset_allowDiselectFalse", function() { 
+          var elt = fixture("layoutHorizontal_valueNotset_allowDiselectFalse");
+          assert.equal(elt.layout, "horizontal");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutHorizontal_value-1_allowDiselectNotset", function() { 
+          var elt = fixture("layoutHorizontal_value-1_allowDiselectNotset");
+          assert.equal(elt.layout, "horizontal");
+          assert.equal(elt.value, -1);
+          assert.equal(elt.allowDiselect, false);
+        });
+        
+        test("layoutHorizontal_value-1_allowDiselectTrue", function() { 
+          var elt = fixture("layoutHorizontal_value-1_allowDiselectTrue");
+          assert.equal(elt.layout, "horizontal");
+          assert.equal(elt.value, -1);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutHorizontal_value-1_allowDiselectFalse", function() { 
+          var elt = fixture("layoutHorizontal_value-1_allowDiselectFalse");
+          assert.equal(elt.layout, "horizontal");
+          assert.equal(elt.value, -1);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutHorizontal_value0_allowDiselectNotset", function() { 
+          var elt = fixture("layoutHorizontal_value0_allowDiselectNotset");
+          assert.equal(elt.layout, "horizontal");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, false);
+        });
+        
+        test("layoutHorizontal_value0_allowDiselectTrue", function() { 
+          var elt = fixture("layoutHorizontal_value0_allowDiselectTrue");
+          assert.equal(elt.layout, "horizontal");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutHorizontal_value0_allowDiselectFalse", function() { 
+          var elt = fixture("layoutHorizontal_value0_allowDiselectFalse");
+          assert.equal(elt.layout, "horizontal");
+          assert.equal(elt.value, 0);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutHorizontal_value1_allowDiselectNotset", function() { 
+          var elt = fixture("layoutHorizontal_value1_allowDiselectNotset");
+          assert.equal(elt.layout, "horizontal");
+          assert.equal(elt.value, 1);
+          assert.equal(elt.allowDiselect, false);
+        });
+        
+        test("layoutHorizontal_value1_allowDiselectTrue", function() { 
+          var elt = fixture("layoutHorizontal_value1_allowDiselectTrue");
+          assert.equal(elt.layout, "horizontal");
+          assert.equal(elt.value, 1);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+        test("layoutHorizontal_value1_allowDiselectFalse", function() { 
+          var elt = fixture("layoutHorizontal_value1_allowDiselectFalse");
+          assert.equal(elt.layout, "horizontal");
+          assert.equal(elt.value, 1);
+          assert.equal(elt.allowDiselect, true);
+        });
+        
+      });
+
+      suite("tests where properties are set as in code", function() { 
+
+
+        function isArray(obj) {
+          return Object.prototype.toString.apply(obj) === "[object Array]";
+        }
+
+        function isObject(obj) {
+          return Object.prototype.toString.apply(obj) === "[object Object]";
+        }
+
+        function isFunction(obj) {
+          return Object.prototype.toString.apply(obj) === "[object Function]";
+        }
+
+        function areEqual(obj1, obj2) {
+          var result = false;
+          var obj1PropertyValue;
+          var obj2PropertyValue;
+
+          if (isArray(obj1) && isArray(obj2)) {
+            result = obj1.length === obj2.length;
+            // if lengths are different return false
+            if(!result) {
+              return result;
+            }
+
+            // else compare items in the arrays for equality
+            for (var i = 0; i < obj1.length && result; i++) {
+              obj1PropertyValue = obj1[i];
+              obj2PropertyValue = obj2[i];
+              result = areEqual(obj1PropertyValue, obj2PropertyValue);
+            }
+          } else if (isObject(obj1) && isObject(obj2)) {
+            var obj1Properties = Object.keys(obj1);
+            var obj2Properties = Object.keys(obj2);
+            // tests that these arrays have same lengths and same names
+            result = areEqual(obj1Properties, obj2Properties);
+
+            if (!result) {
+              return result;
+            }
+            // test that every property in both objects has same value
+            for (var j = 0; j < obj1Properties.length && result; j++) {
+              var obj1PropertyName = obj1Properties[j];
+              var obj2PropertyName = obj2Properties[j];
+              obj1PropertyValue = obj1[obj1PropertyName];
+              obj2PropertyValue = obj2[obj2PropertyName];
+              result = areEqual(obj1PropertyValue, obj2PropertyValue);
+            }
+          } else if (isFunction(obj1) && isFunction(obj2)) {
+            result = obj1.toString() === obj2.toString();
+          } else {
+            // this tests string, number, boolean, null and undefined
+            result = obj1 === obj2;
+          }
+
+          return result;
+        }
+
+        test('valid property values', function() {
+          var elt = fixture('propertyTests');
+
+          var validLayoutValues = [ "notset", "vertical", "horizontal" ];
+          var expectedLayoutValues = [ "vertical", "vertical", "horizontal" ];
+          
+          var validValueValues = [ "notset", -1, 0, 1 ];
+          var expectedValueValues = [ 0, -1, 0, 1 ];
+          
+          var validDiselectValues = [ "notset", true, false ];
+          var expectedDiselectValues = [ false, true, false ];
+
+          for (var i = 0; i < validLayoutValues.length; i++) {
+            var actLayoutValue = validLayoutValues[i];
+            var expLayoutValue = expectedLayoutValues[i];
+
+            for (var j = 0; j < validValueValues.length; j++) {
+              var actValueValue = validValueValues[j];
+              var expValueValue = expectedValueValues[j];
+
+              for (var k = 0; k < validDiselectValues.length; k++) {
+                var actDiselectValue = validDiselectValues[k];
+                var expDiselectValue = expectedDiselectValues[k];
+
+                if (actLayoutValue !== "notset") {
+                  elt.layout = actLayoutValue;
+                } else {
+                  elt.layout = 'vertical';
+                }
+                if (actValueValue !== "notset") {
+                  elt.value = actValueValue;
+                } else {
+                  elt.value = 0;
+                }
+                if (actDiselectValue !== "notset") {
+                  elt.allowDiselect = actDiselectValue;
+                } else {
+                  elt.allowDiselect = false;
+                }
+
+                var eq = areEqual(elt.layout, expLayoutValue);
+                assert.equal(eq, true, 'layout: expected ' + elt.layout + ' to equal ' + expLayoutValue);
+                eq = areEqual(elt.value, expValueValue);
+                assert.equal(eq, true, 'value: expected ' + elt.value + ' to equal ' + expValueValue);
+                eq = areEqual(elt.allowDiselect, expDiselectValue);
+                assert.equal(eq, true, 'allowDiselect: expected ' + elt.allowDiselect + ' to equal ' + expDiselectValue);
+              }
+            }
+          }
+        });
+
+      });
+    });
+  </script>
+  </body>
+</html>

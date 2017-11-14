@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>at-form-like tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link rel="import" href="../at-form-like.html">
+  <link rel="import" href="../../iron-test-helpers/iron-test-helpers.html" />
+  </head>
+  <body>
+    <test-fixture id="propertyTests">
+      <template>
+        <at-form-like></at-form-like>
+      </template>
+    </test-fixture>
+  <script>
+    suite("ui interactions", function() { 
+
+      function isArray(obj) {
+        return Object.prototype.toString.apply(obj) === "[object Array]";
+      }
+
+      function isObject(obj) {
+        return Object.prototype.toString.apply(obj) === "[object Object]";
+      }
+
+      function isFunction(obj) {
+        return Object.prototype.toString.apply(obj) === "[object Function]";
+      }
+
+      function areEqual(obj1, obj2) {
+        var result = false;
+        var obj1PropertyValue;
+        var obj2PropertyValue;
+
+        if (isArray(obj1) && isArray(obj2)) {
+          result = obj1.length === obj2.length;
+          // if lengths are different return false
+          if(!result) {
+            return result;
+          }
+
+          // else compare items in the arrays for equality
+          for (var i = 0; i < obj1.length && result; i++) {
+            obj1PropertyValue = obj1[i];
+            obj2PropertyValue = obj2[i];
+            result = areEqual(obj1PropertyValue, obj2PropertyValue);
+          }
+        } else if (isObject(obj1) && isObject(obj2)) {
+          var obj1Properties = Object.keys(obj1);
+          var obj2Properties = Object.keys(obj2);
+          // tests that these arrays have same lengths and same names
+          result = areEqual(obj1Properties, obj2Properties);
+
+          if (!result) {
+            return result;
+          }
+          // test that every property in both objects has same value
+          for (var j = 0; j < obj1Properties.length && result; j++) {
+            var obj1PropertyName = obj1Properties[j];
+            var obj2PropertyName = obj2Properties[j];
+            obj1PropertyValue = obj1[obj1PropertyName];
+            obj2PropertyValue = obj2[obj2PropertyName];
+            result = areEqual(obj1PropertyValue, obj2PropertyValue);
+          }
+        } else if (isFunction(obj1) && isFunction(obj2)) {
+          result = obj1.toString() === obj2.toString();
+        } else {
+          // this tests string, number, boolean, null and undefined
+          result = obj1 === obj2;
+        }
+
+        return result;
+      }
+
+      function assertLayoutValue(elt, value) {
+        // assert layout value
+        assert.equal(elt.layout, value);
+        // assert css classes
+        var hasClass = elt.classList.contains('layout');
+        assert.equal(hasClass, true);
+        hasClass = elt.classList.contains(value);
+        assert.equal(hasClass, true);
+      }
+
+      function assertValue(elt, value) {
+        var isUpSelected = value === 1;
+        var isDownSelected = value === -1;
+
+        assert.equal(elt.value, value);
+        // asset that buttons are not selected
+        hasClass = Polymer.dom(elt.$.thumbUp).classList.contains('selected');
+        assert.equal(hasClass, isUpSelected);
+        hasClass = Polymer.dom(elt.$.thumbDown).classList.contains('selected');
+        assert.equal(hasClass, isDownSelected);
+      }
+
+      function assertInitialState(elt) {
+        // assert layout value
+        assertLayoutValue(elt, 'vertical');
+
+        // assert initial value
+        assertValue(elt, 0);
+
+        // assert allowDiselect
+        assert.equal(elt.allowDiselect, false);
+      }
+
+      test('ui interactions tests', function() {
+        var elt = fixture('propertyTests');
+
+        // assert initial state
+        assertInitialState(elt);
+
+        // poke the layout property
+        // setting the layout to vertical will do nothing since initial value is vertical
+        elt.layout = 'vertical';
+        assertLayoutValue(elt, 'vertical');
+
+        elt.layout = 'horizontal';
+        assertLayoutValue(elt, 'horizontal');
+        
+        elt.layout = 'vertical';
+        assertLayoutValue(elt, 'vertical');
+
+        // poke the value, assert that value-changed doesn't trigger
+        var eventCount = 0;
+        elt.addEventListener('value-changed', function(event) { 
+          eventCount += 1;
+        });
+
+        elt.value = 0;
+        assertValue(elt, 0);
+
+        elt.value = -1;
+        assertValue(elt, -1);
+
+        elt.value = 1;
+        assertValue(elt, 1);
+
+        elt.value = 0;
+        assertValue(elt, 0);        
+
+        assert.equal(eventCount, 0);
+
+        // poke the thumbUp/Down buttons
+        
+        // 
+        // 
+        // 
+        // TODO(ij): CONTINUE HERE
+        // 
+        // 
+        // 
+
+      });
+
+    });
+  </script>
+  </body>
+</html>

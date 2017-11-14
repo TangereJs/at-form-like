@@ -10995,8 +10995,14 @@
         <at-form-like layout="function f() { return undefined; }" value="function f() { return undefined; }" allow-diselect="function f() { return undefined; }"></at-form-like>
       </template>
     </test-fixture>
+    <test-fixture id="propertyTests">
+      <template>
+        <at-form-like></at-form-like>
+      </template>
+    </test-fixture>
   <script>
     suite("basic", function() { 
+      
       suite("tests where properties are set as attributes", function() { 
       
         test("layoutNotset_valueNotset_allowDiselectNotset", function() { 
@@ -26379,7 +26385,129 @@
         });
         
       });
+
       suite("tests where properties are set as in code", function() { 
+
+        function isArray(obj) {
+          return Object.prototype.toString.apply(obj) === "[object Array]";
+        }
+
+        function isObject(obj) {
+          return Object.prototype.toString.apply(obj) === "[object Object]";
+        }
+
+        function isFunction(obj) {
+          return Object.prototype.toString.apply(obj) === "[object Function]";
+        }
+
+        function areEqual(obj1, obj2) {
+          var result = false;
+          var obj1PropertyValue;
+          var obj2PropertyValue;
+
+          if (isArray(obj1) && isArray(obj2)) {
+            result = obj1.length === obj2.length;
+            // if lengths are different return false
+            if(!result) {
+              return result;
+            }
+
+            // else compare items in the arrays for equality
+            for (var i = 0; i < obj1.length && result; i++) {
+              obj1PropertyValue = obj1[i];
+              obj2PropertyValue = obj2[i];
+              result = areEqual(obj1PropertyValue, obj2PropertyValue);
+            }
+          } else if (isObject(obj1) && isObject(obj2)) {
+            var obj1Properties = Object.keys(obj1);
+            var obj2Properties = Object.keys(obj2);
+            // tests that these arrays have same lengths and same names
+            result = areEqual(obj1Properties, obj2Properties);
+
+            if (!result) {
+              return result;
+            }
+            // test that every property in both objects has same value
+            for (var j = 0; j < obj1Properties.length && result; j++) {
+              var obj1PropertyName = obj1Properties[j];
+              var obj2PropertyName = obj2Properties[j];
+              obj1PropertyValue = obj1[obj1PropertyName];
+              obj2PropertyValue = obj2[obj2PropertyName];
+              result = areEqual(obj1PropertyValue, obj2PropertyValue);
+            }
+          } else if (isFunction(obj1) && isFunction(obj2)) {
+            result = obj1.toString() === obj2.toString();
+          } else {
+            // this tests string, number, boolean, null and undefined
+            result = obj1 === obj2;
+          }
+
+          return result;
+        }
+
+        test('invalid property values', function() {
+          var elt = fixture('propertyTests');
+
+          var invalidLayoutValues = [
+            "notset", "undefined", undefined, "null", null, "true", true, "false", false, "-42", -42, "0", 0, "42", 42, "", "lorem ipsum", "{}", {}, "[]", [], "function f() { return undefined; }", function f() { return undefined; }
+          ];
+          var expectedLayoutValues = [
+            "vertical", "undefined", undefined, "null", null, "true", true, "false", false, "-42", -42, "0", 0, "42", 42, "", "lorem ipsum", "{}", {}, "[]", [], "function f() { return undefined; }", function f() { return undefined; }
+          ];
+          
+          var invalidValueValues = [
+            "notset", "undefined", undefined, "null", null, "true", true, "false", false, "-42", "0", "42", "", "lorem ipsum", "{}", {}, "[]", [], "function f() { return undefined; }", function f() { return undefined; }
+          ];
+          var expectedValueValues = [
+            0, "undefined", undefined, "null", null, "true", true, "false", false, "-42", "0", "42", "", "lorem ipsum", "{}", {}, "[]", [], "function f() { return undefined; }", function f() { return undefined; }
+          ];
+          
+          var invalidDiselectValues = [
+            "notset", "undefined", undefined, "null", null, "true", "false", "-42", -42, "0", 0, "42", 42, "", "lorem ipsum", "{}", {}, "[]", [], "function f() { return undefined; }", function f() { return undefined; }
+          ];
+          var expectedDiselectValues = [
+            false, "undefined", undefined, "null", null, "true", "false", "-42", -42, "0", 0, "42", 42, "", "lorem ipsum", "{}", {}, "[]", [], "function f() { return undefined; }", function f() { return undefined; }
+          ];
+
+          for (var i = 0; i < invalidLayoutValues.length; i++) {
+            var actLayoutValue = invalidLayoutValues[i];
+            var expLayoutValue = expectedLayoutValues[i];
+
+            for (var j = 0; j < invalidValueValues.length; j++) {
+              var actValueValue = invalidValueValues[j];
+              var expValueValue = expectedValueValues[j];
+
+              for (var k = 0; k < invalidDiselectValues.length; k++) {
+                var actDiselectValue = invalidDiselectValues[k];
+                var expDiselectValue = expectedDiselectValues[k];
+
+                if (actLayoutValue !== "notset") {
+                  elt.layout = actLayoutValue;
+                } else {
+                  elt.layout = 'vertical';
+                }
+                if (actValueValue !== "notset") {
+                  elt.value = actValueValue;
+                } else {
+                  elt.value = 0;
+                }
+                if (actDiselectValue !== "notset") {
+                  elt.allowDiselect = actDiselectValue;
+                } else {
+                  elt.allowDiselect = false;
+                }
+
+                var eq = areEqual(elt.layout, expLayoutValue);
+                assert.equal(eq, true, 'layout: expected ' + elt.layout + ' to equal ' + expLayoutValue);
+                eq = areEqual(elt.value, expValueValue);
+                assert.equal(eq, true, 'value: expected ' + elt.value + ' to equal ' + expValueValue);
+                eq = areEqual(elt.allowDiselect, expDiselectValue);
+                assert.equal(eq, true, 'allowDiselect: expected ' + elt.allowDiselect + ' to equal ' + expDiselectValue);
+              }
+            }
+          }
+        });
+
       });
     });
   </script>

@@ -25,8 +25,8 @@
 
     </style>
 
-    <at-carbon-icon icon="now:thumb-up" class$="thumb-icon [[_computeUpSelected(value)]]" on-tap="_handleThumbUpOnTap"></at-carbon-icon>
-    <at-carbon-icon icon="now:thumb-down" class$="thumb-icon [[_computeDownSelected(value)]]" on-tap="_handleThumbDownOnTap"></at-carbon-icon>
+    <at-carbon-icon id="thumbUp" icon="now:thumb-up" class$="thumb-icon [[_computeUpSelected(value)]]" on-tap="_handleThumbUpOnTap"></at-carbon-icon>
+    <at-carbon-icon id="thumbDown" icon="now:thumb-down" class$="thumb-icon [[_computeDownSelected(value)]]" on-tap="_handleThumbDownOnTap"></at-carbon-icon>
 
   </template>
 </dom-module>
@@ -98,7 +98,7 @@
       if (!this.classList.contains('layout')) {
         this.classList.add('layout');
       }
-      // TODO(ij): validate layout value, not css class name
+      // validate layout value, not css class name
       if (this._isValidClassName(oldValue)) {
         this.classList.remove(oldValue);
       }
