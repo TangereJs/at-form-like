@@ -147,13 +147,96 @@
 
         // poke the thumbUp/Down buttons
         
-        // 
-        // 
-        // 
-        // TODO(ij): CONTINUE HERE
-        // 
-        // 
-        // 
+        MockInteractions.tap(elt.$.thumbUp);
+        // taping the thumbUp should add selected class to the button 
+        // chnage value to 1
+        // trigger value-changed event
+        assertValue(elt, 1);
+        assert.equal(eventCount, 1);
+
+        // tapping thumbUp button again should do nothing
+        for (var i = 0; i < 6; i++) {
+          MockInteractions.tap(elt.$.thumbUp);
+          assertValue(elt, 1);
+          assert.equal(eventCount, 1);
+        }
+
+        // reset event count before poking thumbDown
+        eventCount = 0;
+
+        MockInteractions.tap(elt.$.thumbDown);
+        // taping the thumbDown should add selected class to the button 
+        // chnage value to -1
+        // trigger value-changed event
+        assertValue(elt, -1);
+        assert.equal(eventCount, 1);
+
+        // tapping thumbDown button again should do nothing
+        for (var i = 0; i < 6; i++) {
+          MockInteractions.tap(elt.$.thumbDown);
+          assertValue(elt, -1);
+          assert.equal(eventCount, 1);
+        }
+
+        // reset event count
+        eventCount = 0;
+        var expEventCount = 0;
+
+        // set the allowDiselect to true; this changes the button tap behavior
+        elt.allowDiselect = true;
+        assert.equal(elt.allowDiselect, true);
+
+        for (var i = 0; i < 10; i++) {
+          expEventCount += 1;
+          MockInteractions.tap(elt.$.thumbUp);
+          assertValue(elt, 1);
+          assert.equal(eventCount, expEventCount);
+          
+          expEventCount += 1;
+          MockInteractions.tap(elt.$.thumbUp);
+          assertValue(elt, 0);
+          assert.equal(eventCount, expEventCount);
+        }
+
+        // reset event count
+        eventCount = 0;
+        expEventCount = 0;
+
+        for (var i = 0; i < 10; i++) {
+          expEventCount += 1;
+          MockInteractions.tap(elt.$.thumbDown);
+          assertValue(elt, -1);
+          assert.equal(eventCount, expEventCount);
+          
+          expEventCount += 1;
+          MockInteractions.tap(elt.$.thumbDown);
+          assertValue(elt, 0);
+          assert.equal(eventCount, expEventCount);
+        }
+
+        // reset event count
+        eventCount = 0;
+        var expEventCount = 1;
+
+        // set the allowDiselect to true; this changes the button tap behavior
+        elt.allowDiselect = false;
+        assert.equal(elt.allowDiselect, false);
+
+        for (var i = 0; i < 10; i++) {
+          MockInteractions.tap(elt.$.thumbUp);
+          assertValue(elt, 1);
+          assert.equal(eventCount, expEventCount);
+        }
+
+        // reset event count
+        eventCount = 0;
+        expEventCount = 1;
+
+        for (var i = 0; i < 10; i++) {
+          MockInteractions.tap(elt.$.thumbDown);
+          assertValue(elt, -1);
+          assert.equal(eventCount, expEventCount);
+        }
 
       });
 

@@ -115,12 +115,14 @@
     
     _handleThumbUpOnTap: function(event) {
       var newValue = this.allowDiselect && this.value === 1 ? 0 : 1;
+      if (this.value === newValue) return;
       this.value = newValue;
       this._fireValueChangedEvent(newValue);
     },
 
     _handleThumbDownOnTap: function(event) {
       var newValue = this.allowDiselect && this.value === -1 ? 0 : -1;
+      if (this.value === newValue) return;
       this.value = newValue;
       this._fireValueChangedEvent(newValue);
     },
