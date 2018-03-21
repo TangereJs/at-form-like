@@ -7,10 +7,10 @@
     <title>at-form-like demo page</title>
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../../at-theme/at-theme.html">
+    <link rel="import" href="../../at-core-style-classes/at-core-style-classes.html" />
     <link rel="import" href="../at-form-like.html">
 
-    <style is="custom-style">
+    <style is="custom-style" include="at-core-style-classes">
       .font-title {
         @apply(--paper-font-body1);
         font-size: 18px;
@@ -28,10 +28,6 @@
         margin: 8px;
       }
 
-      .horizontal-layout {
-        @apply(--layout-horizontal);
-      }
-
       at-form-like {
         /* Uncomment this border to confirm that block/flex and inline-flex behavior is correct */
         /*border: 1px solid purple;*/
@@ -40,8 +36,8 @@
     </style>
   </head>
 
-  <body class="layout horizontal">
-    <div class="flex demo-margins">
+  <body class="layout-horizontal">
+    <div class="layout-flex demo-margins">
       <h4 class="font-title">Layout vertical, value 0</h4>
       <at-form-like></at-form-like>
 
@@ -51,17 +47,17 @@
       <h4 class="font-title">Layout vertical, value 1</h4>
       <at-form-like value="1"></at-form-like>
 
-      <h4 class="font-title">Layout horizontal, value 0</h4>
+      <h4 class="font-title">layout horizontal, value 0</h4>
       <at-form-like layout="horizontal"></at-form-like>
 
-      <h4 class="font-title">Layout horizontal, value -1</h4>
+      <h4 class="font-title">layout horizontal, value -1</h4>
       <at-form-like layout="horizontal" value="-1"></at-form-like>
 
-      <h4 class="font-title">Layout horizontal, value 1</h4>
+      <h4 class="font-title">layout horizontal, value 1</h4>
       <at-form-like layout="horizontal" value="1"></at-form-like>
     </div>
 
-    <div class="flex demo-margins">
+    <div class="layout-flex demo-margins">
       <h4 class="font-title">Layout vertical, value 0</h4>
       <at-form-like class="inline-like"></at-form-like>
 
@@ -71,13 +67,13 @@
       <h4 class="font-title">Layout vertical, value 1</h4>
       <at-form-like class="inline-like" value="1"></at-form-like>
 
-      <h4 class="font-title">Layout horizontal, value 0</h4>
+      <h4 class="font-title">layout horizontal, value 0</h4>
       <at-form-like class="inline-like" layout="horizontal"></at-form-like>
 
-      <h4 class="font-title">Layout horizontal, value -1</h4>
+      <h4 class="font-title">layout horizontal, value -1</h4>
       <at-form-like class="inline-like" layout="horizontal" value="-1"></at-form-like>
 
-      <h4 class="font-title">Layout horizontal, value 1</h4>
+      <h4 class="font-title">layout horizontal, value 1</h4>
       <at-form-like class="inline-like" layout="horizontal" value="1"></at-form-like>
     </div>
 
